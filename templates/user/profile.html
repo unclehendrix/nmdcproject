@@ -1,0 +1,57 @@
+{% extends 'partials/base.html' %}
+{%block title%}Profile page{%endblock title%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+ <!--Profile-->
+ <div class="container">
+    <div class="row my-4">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            Profile Information
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <span class="h3">Admin Profile</span> <a class="btn btn-dark btn-sm float-right"href="{% url 'user-profile-update' %}">Edit</a>
+                <hr>
+                <table class="table bg-white table-borderless">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Name</th>
+                      <td>{{user.username}}</td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone</th>
+                      <td>{{user.profile.phone}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Address</th>
+                      <td>{{user.profile.address}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Fileno</th>
+                      <td>{{user.profile.file_no}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-4">
+                <img class="img-thumbnail "src="{{user.profile.image.url}}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+   <!--EndProfile-->
+{%endblock%}

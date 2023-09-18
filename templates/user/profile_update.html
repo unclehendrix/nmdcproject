@@ -1,0 +1,35 @@
+{% extends 'partials/base.html' %}
+{%block title%}Profile page{%endblock title%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+ <!--Profile-->
+ <div class="container">
+    <div class="row my-4">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            Profile Information
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <span class="h3">Admin Profile</span>
+                <hr>
+                <form method= 'POST', enctype='multipart/form-data'>
+                  {%csrf_token%}
+                  {{user_form|crispy}}
+                  {{profile_form|crispy}}
+                <input class="btn btn-dark btn-block" type="submit" value="Update">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+   <!--EndProfile-->
+{%endblock%}

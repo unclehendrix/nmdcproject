@@ -1,0 +1,80 @@
+
+{% extends  'partials/base.html'%}
+
+{%block title %}Staff Page{% endblock title%}
+
+{%block content%}
+
+{% include 'partials/topnav.html'%}
+
+ <!--Tables-->
+ <div class="table-responsive">
+    <div class="row my-4"></div>
+    <div class="col-md-6">
+      <table class="table bg-white">
+        <thead class=thead-light>
+          <tr>
+            <th scope="col">Staff_Id</th>
+            <th scope="col">Staff_Name</th>
+            <th scope="col">Department_Name</th>
+            <th scope="col">Division_Name</th>
+            <th scope="col">Unit_Name</th>
+            <th scope="col">Section_Name</th>
+            <th scope="col">Date_First_app</th>
+            <th scope="col">Date_Present_app</th>
+            <th scope="col">Cadre</th>
+            <th scope="col">Rank_position</th>
+            <th scope="col">Gloconraiss</th>
+            <th scope="col">DOB</th>
+            <th scope="col">File_No</th>
+            <th scope="col">Geo_Political_zone</th>
+            <th scope="col">State</th>
+            <th scope="col">Local_Gov_Area</th>
+            <th scope="col">IPPS</th>
+            <th scope="col">Activity</th>
+            
+            
+            <div class="form-group">
+              <th><label for="exampleFormControlSelect1">Sort</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+              <option>Name</option>
+              <option>File no</option>
+              </select>
+              <th><a href="{% url 'generate-pdf' %}"><i class="fa-solid fa-print"></i>Print</a></th>
+            </div>
+          </tr>
+        </thead>
+        <tbody>
+          {%for item in items%}
+            <td>{{item.Staff_Id}}</td>
+            <td>{{item.Staff_Name}}</td>
+            <td>{{item.Department_Name}}</td>
+            <td>{{item.Division_Name}}</td>
+            <td>{{item.Unit_Name}}</td>
+            <td>{{item.Section_Name}}</td>
+            <td>{{item.Date_First_app}}</td>
+            <td>{{item.Date_Present_app}}</td>
+            <td>{{item.Cadre}}</td>
+            <td>{{item.Rank_position}}</td>
+            <td>{{item.Gloconraiss}}</td>
+            <td>{{item.DOB}}</td>
+            <td>{{item.File_No}}</td>
+            <td>{{item.Geo_Political_zone}}</td>
+            <td>{{item.State}}</td>
+            <td>{{item.Local_Gov_Area}}</td>
+            <td>{{item.IPPS}}</td>
+
+            <td>
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a class="btn btn-dark btn-sm" href="{% url 'dashboard-staff-update' item.id %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'dashboard-staff-delete' item.id %}">Delete</a>
+              </div>
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+   </div>
+   <!--EndTables-->
+{%endblock%}

@@ -1,0 +1,54 @@
+{%extends 'partials/base.html'%}
+
+{%block title%}Division Page{% endblock title %}
+{% load crispy_forms_tags %}
+
+{%block content%}
+
+{% include 'partials/topnav.html'%}
+
+ <!--Table-->
+<div class="container">
+  <div class="row my-4">
+      <div class="col-md-4">
+          <div class="border bg-white p-3">
+              <h4>Add Division</h4>
+              <hr>
+              <form method='POST'>
+              {%csrf_token%}
+              {{form|crispy}}         
+                  <input class="btn btn-dark btn-block" type="submit" value="Add Division">
+
+              </form>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <table class="table bg-white">
+              <thead class="thead-light">
+                  <tr class="text-white">
+                      <th scope="col">Division Name</th>
+                      <th scope="col">Department Name</th>
+                      <th scope="col">Activity</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    {%for item in items%}
+                    <td>{{item.Division_Name}}</td>
+                      <td>{{item.Department_Name}}</td>
+                      <td>
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                          <a class="btn btn-dark btn-sm" href="{% url 'dashboard-division-update' item.id %}">Edit</a>
+                          <a class="btn btn-danger btn-sm" href="{% url 'dashboard-division-delete' item.id %}">Delete</a>
+                        </div>
+                      </td>
+                  </tr>
+                    {%endfor%}
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+</div>
+<!--Endtable-->
+{%endblock%}

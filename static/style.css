@@ -1,0 +1,41 @@
+body{
+    background-color:rgb(230, 227, 227);
+}
+.my-card:hover{
+    transform: scale(1.1);
+    transition:0.2s ease-in-out;
+}
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the table */
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+    max-width: 100%;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    th, td {
+        padding: 5px;
+        font-size: 12px;
+    }
+}

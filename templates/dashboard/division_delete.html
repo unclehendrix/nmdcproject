@@ -1,0 +1,31 @@
+{%extends 'partials/base.html'%}
+
+{%block title%}Delete{% endblock title %}
+
+
+{%block content%}
+<!--Table-->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-4">
+            <div class="border bg-white p-3">
+                <h4>Delete Division</h4>
+                <hr>
+                <div class='alert alert-danger'>
+                    <h4>Are You sure you want to delete</h4>
+                </div>
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{ form }}
+                    <a class="btn btn-secondary" href="{% url 'dashboard-division' %}">Cancel</a>
+                    <input class='btn btn-danger' type='submit' value='Confirm'>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+  </div>
+  
+<!--EndTables-->
+{%endblock%}

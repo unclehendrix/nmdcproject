@@ -1,0 +1,32 @@
+{%extends 'partials/base.html'%}
+
+{%block title%}Home Page{% endblock title %}
+{% load crispy_forms_tags %}
+
+
+{%block content%}
+
+{%if user.is_authenticated and user.is_staff and user.is_superuser%}
+{% include 'partials/topnav.html'%}
+
+<!--Form-->
+<div class="container">
+    <div class="row my-6"></div>
+    <div class="col-md-8">
+      <div class="border bg-white p-3">
+        <h4>Register Employee</h4>
+        <hr>
+        <form method = 'POST'>
+          {% csrf_token %}
+          {{form|crispy}}
+            </div>
+          <input class="btn btn-success btn-block" type="submit" value="Register">
+        </form>
+    </div>
+    </div>
+   </div>
+   <!--Endform-->
+   {%else%}
+   {%include 'dashboard/staff_index.html'%}
+{%endif%}
+{%endblock%}
